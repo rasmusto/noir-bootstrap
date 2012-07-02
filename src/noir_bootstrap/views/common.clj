@@ -5,9 +5,9 @@
 (defpartial layout [& content]
             (html5
               [:head
-               [:title "noir-bootstrap"]
-               (include-css "/css/bootstrap.css")
-               (include-css "/css/bootstrap-responsive.css")
+               [:title "my-site"]
+               (include-css "/docs/assets/css/bootstrap.css")
+               (include-css "/docs/assets/css/bootstrap-responsive.css")
                [:style "body { padding-top: 60px; }"]]
               [:body
                (list
@@ -30,6 +30,6 @@
                      [:li
                       [:a {"href" "http://github.com/rasmusto"} "github"]]]]]]]
                 [:div.container content]
-                (include-js "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
-                (include-js "/js/bootstrap-tab.js")
-                (include-js "/js/bootstrap.min.js"))]))
+                 (include-js "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+                 (include-js "/docs/assets/js/bootstrap.js")
+                 (include-js "/docs/assets/js/bootstrap-tab.js"))]))

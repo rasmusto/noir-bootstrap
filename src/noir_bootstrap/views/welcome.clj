@@ -3,6 +3,13 @@
   (:use [noir.core :only [defpage]]
         [hiccup.core :only [html]]))
 
+(defn tab [n]
+  (html [:a {"href" (str "#" n) "data-toggle" "tab"} n]))
+
+(defn tabcontent [n c & active?]
+  (html (if active? [:div {"class" (str "tab-pane active") "id" (str n)} [:p (str c)]]
+                    [:div {"class" "tab-pane" "id" (str n)} [:p (str c)]])))
+
 (defpage "/" []
   (common/layout
    [:h1 "A page about myself"]
@@ -28,42 +35,24 @@
             [:button.btn "4"]
             [:button.btn "5"]]))
 
-
 (defpage "/tabs" []
          (common/layout
            [:div.tabbable
             [:ul {"class" "nav nav-tabs"}
-             [:li {"class" "active" "data-toggle" "tab"}
-              [:a {"href" "#home"} "Home"]]
-             [:li {"data-toggle" "tab"}
-              [:a {"href" "#profile"} "Profile"]]
-             [:li {"data-toggle" "tab"}
-              [:a {"href" "#messages"} "Messages"]]]
+             [:li.active (tab "tab1")]
+             [:li (tab "tab2")]
+             [:li (tab "tab3")]]
             [:div.tab-content
-             [:div {"class" "tab-pane active" "id" "home"}
-              [:p "home content"]]
-             [:div {"class" "tab-pane" "id" "profile"}
-              [:p "profile content"]]
-             [:div {"class" "tab-pane" "id" "messages"}
-              [:p "messages content"]]]]))
+             (tabcontent "tab1" "tab1 content" true)
+             (tabcontent "tab2" "tab2 content")
+             (tabcontent "tab3" "tab3 content")]]
 
-
-
- ;<h3>Tabbable example</h3>
-      ;<p>To make tabs tabbable, create a <code>.tab-pane</code> with unique ID for every tab and wrap them in <code>.tab-content</code>.</p>
-      ;<div class="tabbable" style="margin-bottom: 18px;">
-        ;<ul class="nav nav-tabs">
-          ;<li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
-          ;<li><a href="#tab2" data-toggle="tab">Section 2</a></li>
-          ;<li><a href="#tab3" data-toggle="tab">Section 3</a></li>
-        ;</ul>
-        ;<div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
-          ;<div class="tab-pane active" id="tab1">
-            ;<p>I'm in Section 1.</p>
-          ;</div>
-          ;<div class="tab-pane" id="tab2">
-            ;<p>Howdy, I'm in Section 2.</p>
-          ;</div>
-          ;<div class="tab-pane" id="tab3">
-            ;<p>What up girl, this is Section 3.</p>
-          ;</div>
+           [:div.tabbable
+            [:ul {"class" "nav nav-pills"}
+             [:li.active (tab "test1")]
+             [:li (tab "test2")]
+             [:li (tab "test3")]]
+            [:div.tab-content
+             (tabcontent "test1" "test1 content" true)
+             (tabcontent "test2" "test2 content")
+             (tabcontent "test3" "test3 content")]]))
