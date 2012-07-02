@@ -16,19 +16,20 @@
                   [:div.container
                    [:a.btn.btn-navbar
                     [:span.icon-bar]]
-                  [:a.brand "Noir Bootstrap"]
+                  [:a.brand "Torben Rasmussen"]
                    [:div.nav-collapse
                     [:ul.nav
                      [:li.active
-                      [:a {"href" "#"} "Home"]]
+                      [:a {"href" "/"} "Home"]]
                      [:li
-                      [:a {"href" "http://www.webnoir.org/tutorials"} "Tutorials"]]
+                      [:a {"href" "/about"} "about"]]
                      [:li
-                      [:a {"href" "http://groups.google.com/group/clj-noir"} "Google Group"]]
+                      [:a {"href" "/buttons"} "buttons"]]
                      [:li
-                      [:a {"href" "http://www.webnoir.org/docs/"} "API"]]
+                      [:a {"href" "/tabs"} "tabs"]]
                      [:li
-                      [:a {"href" "https://github.com/ibdknox/noir"} "Source"]]]]]]]
-                [:div.container content] 
+                      [:a {"href" "http://github.com/rasmusto"} "github"]]]]]]]
+                [:div.container content]
                 (include-js "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+                (include-js "/js/bootstrap-tab.js")
                 (include-js "/js/bootstrap.min.js"))]))
